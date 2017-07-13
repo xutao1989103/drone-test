@@ -20,4 +20,4 @@ ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
 COPY target/dronedemo-0.0.1-SNAPSHOT.jar /data/apps/
 
 # Define default command.
-CMD ["bash"]
+CMD ["java", "-jar", "/data/apps/dronedemo-0.0.1-SNAPSHOT.jar"]
