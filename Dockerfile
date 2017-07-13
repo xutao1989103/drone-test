@@ -17,5 +17,7 @@ WORKDIR /data
 # Define commonly used JAVA_HOME variable
 ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
 
+COPY target/dronedemo-0.0.1-SNAPSHOT.jar /data/apps
+
 # Define default command.
 CMD ["bash"]

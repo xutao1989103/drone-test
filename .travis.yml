@@ -8,5 +8,9 @@ jdk:
 services:
   - docker
 
-before_install:
+after_success:
   - docker build -t muqi/cd .
+  - if [ "$TRAVIS_BRANCH" == "master" ]; then
+      docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
+      docker push xtaodocker/cd;
+      fi
