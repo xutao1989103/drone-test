@@ -9,7 +9,7 @@ services:
   - docker
 
 after_success:
-  - docker build -t muqi/cd .
+  - docker build -t xtaodocker/cd .
   - if [ "$TRAVIS_BRANCH" == "master" ]; then
       docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
       docker push xtaodocker/cd;
