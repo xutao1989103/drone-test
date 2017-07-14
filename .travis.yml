@@ -24,7 +24,7 @@ after_success:
 deploy:
   provider: script
   skip_cleanup: true
-  script: ssh -o StrictHostKeyChecking=no root@120.77.236.201 ./root/apps/deploy.sh
+  script: ssh -o StrictHostKeyChecking=no root@"$DEPLOY_HOST" ./root/apps/deploy.sh
   on:
     branch: master
 
