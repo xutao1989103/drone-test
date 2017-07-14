@@ -1,0 +1,6 @@
+version: '2'
+services:
+  app:
+    image: xtaodocker/cd:latest
+    ports:
+      - 8082:8080

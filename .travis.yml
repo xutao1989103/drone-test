@@ -21,6 +21,11 @@ after_success:
       docker push xtaodocker/cd;
     fi
 
-deploy: ./deploy.sh
+deploy:
+  provider: script
+  skip_cleanup: true
+  script: ssh -o StrictHostKeyChecking=no root@120.77.236.201 ./root/apps/deploy.sh
+  on:
+    branch: master
 
 after_deploy: ./health_check.sh
