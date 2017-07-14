@@ -16,7 +16,11 @@ before_script: ./before_build.sh
 after_success:
   - docker build -t xtaodocker/cd .
   - if [ "$TRAVIS_BRANCH" == "master" ]; then
-      docker login -u="xtaodocker" -p="xutao205320085";
+      docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
       docker images;
       docker push xtaodocker/cd;
     fi
+
+deploy: ./deploy.sh
+
+after_deploy: ./health_check.sh

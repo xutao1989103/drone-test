@@ -1,1 +1,2 @@
-echo "before_build.........."
+#!/bin/sh
+echo "before_build .... .... ...."
