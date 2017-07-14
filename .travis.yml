@@ -9,7 +9,7 @@ services:
   - docker
 
 before_install:
-  - cat "before_install"
+  - echo "before_install"
 
 before_script: ./before_build.sh
 

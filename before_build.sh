@@ -1,1 +1,1 @@
-cat "before_build.........."
+echo "before_build.........."
