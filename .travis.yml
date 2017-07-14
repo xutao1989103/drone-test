@@ -8,10 +8,15 @@ jdk:
 services:
   - docker
 
+before_install:
+  - cat "before_install"
+
+before_script: ./before_build.sh
+
 after_success:
   - docker build -t xtaodocker/cd .
   - if [ "$TRAVIS_BRANCH" == "master" ]; then
       docker login -u="xtaodocker" -p="xutao205320085";
       docker images;
       docker push xtaodocker/cd;
-      fi
+    fi
