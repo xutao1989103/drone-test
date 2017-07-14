@@ -11,13 +11,14 @@ before_install:
 before_script: ./before_build.sh
 after_success:
 - docker build -t xtaodocker/cd .
-- if [ "$TRAVIS_BRANCH" == "master" ]; then docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
-  docker images; docker push xtaodocker/cd; fi
+- if [ "$TRAVIS_BRANCH" == "master" ]; then
+  docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
+  docker images; docker push xtaodocker/cd;
+  fi
 deploy:
   provider: script
   skip_cleanup: true
-  script: chmod 600 deploy_key && ssh -o StrictHostKeyChecking=no -i deploy_key
-    root@"$DEPLOY_HOST" ./deploy.sh
+  script: chmod 600 deploy_key && ssh -o StrictHostKeyChecking=no -i deploy_key root@"$DEPLOY_HOST" ./deploy.sh
   on:
     branch: master
 after_deploy: ./health_check.sh
