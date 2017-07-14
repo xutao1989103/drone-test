@@ -16,7 +16,7 @@ before_script: ./before_build.sh
 after_success:
   - docker build -t xtaodocker/cd .
   - if [ "$TRAVIS_BRANCH" == "master" ]; then
-      docker login -u="xtaodocker" -p="xutao2053200085";
+      docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
       docker images;
       docker push xtaodocker/cd;
     fi
@@ -24,7 +24,7 @@ after_success:
 deploy:
   provider: script
   skip_cleanup: true
-  script: chmod 600 deploy_key && ssh -o StrictHostKeyChecking=no -i deploy_key root@120.77.236.201 ./deploy.sh
+  script: chmod 600 deploy_key && ssh -o StrictHostKeyChecking=no -i deploy_key root@"$DEPLOY_HOST" ./deploy.sh
   on:
     branch: master
 
