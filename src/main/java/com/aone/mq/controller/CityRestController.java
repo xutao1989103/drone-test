@@ -23,6 +23,7 @@ public class CityRestController {
 
     @RequestMapping(value = "/get", method = RequestMethod.GET)
     public City findOneCity(@RequestParam(value = "cityName", required = true) String cityName) {
+        System.out.println("city get " + cityName);
         return cityService.findCityByName(cityName);
     }
 

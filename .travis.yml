@@ -9,9 +9,12 @@ before_install:
 before_script: ./before_build.sh
 after_success:
 - docker build -t xtaodocker/cd .
+- docker build -t xtaodocker/mysql ./mysql/
 - if [ "$TRAVIS_BRANCH" == "master" ]; then
   docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
-  docker images; docker push xtaodocker/cd;
+  docker images;
+  docker push xtaodocker/cd;
+  docker push xtaodocker/mysql;
   fi
 deploy:
   provider: script
