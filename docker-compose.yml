@@ -2,7 +2,7 @@ version: '2'
 
 services:
   mysql:
-    build: ./mysql
+    image: xtaodocker/mysql:latest
     ports:
       - 3306:3306
     environment:
