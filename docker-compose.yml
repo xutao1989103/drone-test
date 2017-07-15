@@ -1,6 +1,16 @@
 version: '2'
+
 services:
-  app:
+  mysql:
+    build: ./mysql
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=123456
+  web:
     image: xtaodocker/cd:latest
     ports:
       - 8082:8080
+    links:
+      - mysql
+
