@@ -19,7 +19,10 @@ after_success:
 deploy:
   provider: script
   skip_cleanup: true
-  script: chmod 600 deploy_key && ssh -o StrictHostKeyChecking=no -i deploy_key root@"$DEPLOY_HOST" ./deploy.sh
+  script: chmod 600 deploy_key &&
+          scp -i deploy_key deploy.sh root@"$DEPLOY_HOST":/root/ &&
+          scp -i deploy_key docker-compose.yml root@"$DEPLOY_HOST":/root/ &&
+          ssh -o StrictHostKeyChecking=no -i deploy_key root@"$DEPLOY_HOST" ./deploy.sh
   on:
     branch: master
 after_deploy: ./health_check.sh
