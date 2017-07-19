@@ -25,4 +25,7 @@ deploy:
 after_deploy: ./health_check.sh
 notifications:
   email:
-    - xt111024@alibaba-inc.com
+    recipients:
+      - xt111024@alibaba-inc.com
+    on_success: always # default: change
+    on_failure: always # default: always
