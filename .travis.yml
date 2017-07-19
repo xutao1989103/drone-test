@@ -23,3 +23,6 @@ deploy:
   on:
     branch: master
 after_deploy: ./health_check.sh
+notifications:
+  email:
+    - xt111024@alibaba-inc.com
