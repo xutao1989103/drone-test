@@ -21,6 +21,11 @@ public class CityRestController {
     @Autowired
     private CityService cityService;
 
+    @RequestMapping(value = "/test", method = RequestMethod.GET)
+    public String test(String key) {
+        return "ok";
+    }
+
     @RequestMapping(value = "/get", method = RequestMethod.GET)
     public City findOneCity(@RequestParam(value = "cityName", required = true) String cityName) {
         System.out.println("city get " + cityName);
