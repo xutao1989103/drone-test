@@ -23,7 +23,7 @@ public class CityRestController {
 
     @RequestMapping(value = "/test", method = RequestMethod.GET)
     public String test(String key) {
-        return "oks";
+        return "ok";
     }
 
     @RequestMapping(value = "/get", method = RequestMethod.GET)
